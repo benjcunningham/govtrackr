@@ -1,0 +1,9 @@
+resource,description,resource_url
+bill,A bill represents a bill or resolution introduced in the United States Congress.,https://www.govtrack.us/api/v2/bill
+cosponsorship,"A (bill, person) pair indicating cosponsorship, with join and withdrawn dates.",https://www.govtrack.us/api/v2/cosponsorship
+person,"Members of Congress, Presidents, and Vice Presidents since the founding of the nation.",https://www.govtrack.us/api/v2/person
+role,"Terms held in office by Members of Congress, Presidents, and Vice Presidents. Each term corresponds with an election, meaning each term in the House covers two years (one 'Congress'), as President/Vice President four years, and in the Senate six years (three 'Congresses').",https://www.govtrack.us/api/v2/role
+vote,Roll call votes in the U.S. Congress since 1789. How people voted is accessed through the Vote_voter API.,https://www.govtrack.us/api/v2/vote
+vote_voter,How people voted on roll call votes in the U.S. Congress since 1789. See the Vote API. Filter on the vote field to get the results of a particular vote.,https://www.govtrack.us/api/v2/vote_voter
+committee,"Committes and subcommittees in the United States Congress, including historical committees.",https://www.govtrack.us/api/v2/committee
+committee_member,A record indicating the current membership of a Member of Congress on a committee or subcommittee. The IDs on these records are not stable (do not use them).,https://www.govtrack.us/api/v2/committee_member

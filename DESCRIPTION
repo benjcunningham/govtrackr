@@ -1,0 +1,20 @@
+Package: govtrackr
+Version: 0.0.0.9000
+Title: Client for the GovTrack.us API
+Description:
+  An R interface for the GovTrack.us API. Functions are designed to
+  filter data resources server-side.
+Authors@R: c(
+  person("Ben", "Cunningham", role = c("aut", "cre"),
+         email = "benjamin-cunningham@uiowa.edu")
+  )
+URL: https://github.com/benjcunningham/govtrackr
+BugReports: https://github.com/benjcunningham/issues
+License: MIT
+LazyData: TRUE
+Imports:
+  magrittr
+Suggests:
+  testthat
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
