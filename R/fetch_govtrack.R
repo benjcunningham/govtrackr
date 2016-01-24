@@ -41,9 +41,10 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 #' Intelligently separate params with ampersands
 #'
 #' @param x Character string
-#' @rdname fetch_govtrack
+#' @rdname add_amp
 #' @return The input string concatenated with `&` if it does not end
 #'   with `?`, otherwise the input string.
+#' @keywords internal
 .add_amp <- function(x) {
 
   substr(x, nchar(x), nchar(x)) %>%
@@ -55,9 +56,10 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 #' Identify improper filters
 #'
 #' @inheritParams fetch_govtrack
-#' @rdname fetch_govtrack
+#' @rdname bad_filters
 #' @return Named vector the same length as \code{filter} identifying
 #' improper filters with 1 and proper filters with 0.
+#' @keywords internal
 .bad_filters <- function(res, filter) {
 
   sapply(names(filter),
@@ -70,8 +72,9 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 #'
 #' @param res_url Resource root URL
 #' @inheritParams fetch_govtrack
-#' @rdname fetch_govtrack
+#' @rdname create_query
 #' @return Character string representing the constructed API query
+#' @keywords internal
 .create_query <- function(res_url, filter, sort, limit, offset) {
 
   q <- paste0(res_url, "?")
