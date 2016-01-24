@@ -17,5 +17,6 @@ Imports:
   jsonlite,
   magrittr
 Suggests:
+  curl,
   testthat
 RoxygenNote: 5.0.1

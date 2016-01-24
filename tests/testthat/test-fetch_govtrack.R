@@ -46,3 +46,29 @@ test_that("Bad filters are noted", {
   expect_equal(.bad_filters("bill", list(q = "foo", bar = "baz")),
                c(q = FALSE, bar = TRUE))
 })
+
+
+context("Fetching data sets")
+
+test_that("Execution halts for bad resources", {
+  expect_error(fetch_govtrack("foo"),
+               "The resource `foo` does not exist at GovTrack.")
+})
+
+test_that("Execution halts for bad filters", {
+  expect_error(fetch_govtrack("bill", filter = list(foo = "bar")),
+               paste0("The following fields cannot be used for ",
+                      "filtering: `foo`"))
+  expect_error(fetch_govtrack("bill",
+                              filter = list(foo = "bar", baz = "qux")),
+               paste0("The following fields cannot be used for ",
+                      "filtering: `foo`, `baz`"))
+})
+
+foo <- fetch_govtrack("bill", filter = list(congress = 112),
+                      limit = 3)
+
+test_that("Reasonable results are returned", {
+#   expect_true(is.data.frame(foo))
+#   expect_equal(nrow(foo), 3)
+})
