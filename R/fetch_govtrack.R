@@ -10,7 +10,6 @@
 #' @return Data frame of results. Note that observations are returned
 #'   according to the structure returned by the server and may not be
 #'   wholly atomic.
-#' @import magrittr
 #' @export
 fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 
