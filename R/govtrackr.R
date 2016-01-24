@@ -9,3 +9,6 @@ NULL
 
 # Quiets R CMD check NOTEs for `.` in pipelines
 utils::globalVariables(c("."))
+
+# Quiets R CMD check NOTEs for internal data
+utils::globalVariables(c("fields", "resources"))
