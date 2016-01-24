@@ -60,32 +60,42 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 #' @return Character string representing the constructed API query
 .create_query <- function(res_url, filter, sort, limit, offset) {
 
-  q <- NULL
+  q <- paste0(res_url, "?")
 
   if (!missing(filter)) {
 
     q <-
       paste0(names(filter), "=", filter) %>%
       paste(collapse = "&") %>%
-      paste0(res_url, "?", .) %>%
       paste0(q, .)
 
   }
 
   if (!missing(sort)) {
+
     q <-
       paste(sort, collapse = "|") %>%
-      paste0(q, '&sort=', .)
+      paste0(.add_amp(q), "sort=", .)
+
   }
 
   if (!missing(limit)) {
-    q <- paste0(q, '&limit=', limit)
+    q <- paste0(.add_amp(q), "limit=", limit)
   }
 
   if (!missing(offset)) {
-    q <- paste0(q, '&offset=', offset)
+    q <- paste0(.add_amp(q), "offset=", offset)
   }
 
   return(q)
+
+}
+
+#'
+.add_amp <- function(x) {
+
+  substr(x, nchar(x), nchar(x)) %>%
+    {ifelse(. != "?", "&", "")} %>%
+    paste0(x, .)
 
 }
