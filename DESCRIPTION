@@ -13,8 +13,8 @@ BugReports: https://github.com/benjcunningham/issues
 License: MIT
 LazyData: TRUE
 Imports:
+  jsonlite,
   magrittr
 Suggests:
   testthat
-VignetteBuilder: knitr
 RoxygenNote: 5.0.1
