@@ -38,6 +38,20 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 
 }
 
+#' Intelligently separate params with ampersands
+#'
+#' @param x Character string
+#' @rdname fetch_govtrack
+#' @return The input string concatenated with `&` if it does not end
+#'   with `?`, otherwise the input string.
+.add_amp <- function(x) {
+
+  substr(x, nchar(x), nchar(x)) %>%
+  {ifelse(. != "?", "&", "")} %>%
+    paste0(x, .)
+
+}
+
 #' Identify improper filters
 #'
 #' @inheritParams fetch_govtrack
@@ -88,14 +102,5 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
   }
 
   return(q)
-
-}
-
-#'
-.add_amp <- function(x) {
-
-  substr(x, nchar(x), nchar(x)) %>%
-    {ifelse(. != "?", "&", "")} %>%
-    paste0(x, .)
 
 }
