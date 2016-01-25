@@ -45,6 +45,10 @@ test_that("Bad filters are noted", {
                c(q = FALSE, congress = FALSE))
   expect_equal(.bad_filters("bill", list(q = "foo", bar = "baz")),
                c(q = FALSE, bar = TRUE))
+  expect_equal(.bad_filters("bill", list(congress__lte = 113)),
+               c(congress = FALSE))
+  expect_equal(.bad_filters("bill", list(foo__lte = 'bar')),
+               c(foo = TRUE))
 })
 
 
@@ -69,6 +73,6 @@ foo <- fetch_govtrack("bill", filter = list(congress = 112),
                       limit = 3)
 
 test_that("Reasonable results are returned", {
-#   expect_true(is.data.frame(foo))
-#   expect_equal(nrow(foo), 3)
+  expect_true(is.data.frame(foo))
+  expect_equal(nrow(foo), 3)
 })

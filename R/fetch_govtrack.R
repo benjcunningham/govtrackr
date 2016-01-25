@@ -61,7 +61,7 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 #' @keywords internal
 .bad_filters <- function(res, filter) {
 
-  sapply(names(filter),
+  sapply(stringr::str_extract(names(filter), "^.*(?=__)|^.*$"),
          function(x) !(x %in% fields$field[fields$resource == res &
                                            fields$filterable]))
 

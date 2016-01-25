@@ -15,7 +15,8 @@ LazyData: TRUE
 Depends: R (>= 2.10)
 Imports:
   jsonlite,
-  magrittr
+  magrittr,
+  stringr
 Suggests:
   curl,
   testthat
