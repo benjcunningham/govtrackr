@@ -4,7 +4,7 @@
 \alias{fetch_govtrack}
 \title{Retrieve data from the GovTrack.us API}
 \usage{
-fetch_govtrack(res = "bill", filter, sort, limit, offset)
+fetch_govtrack(res = "bill", filter, sort, limit, offset, select)
 }
 \arguments{
 \item{res}{Resource identifier}
@@ -16,6 +16,8 @@ fetch_govtrack(res = "bill", filter, sort, limit, offset)
 \item{limit}{Maximum number of results to return}
 
 \item{offset}{Pagination index of results}
+
+\item{select}{Vector of fields to return}
 }
 \value{
 Data frame of results. Note that observations are returned

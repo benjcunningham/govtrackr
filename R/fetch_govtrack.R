@@ -7,11 +7,13 @@
 #' @param sort Vector of fields on which to sort
 #' @param limit Maximum number of results to return
 #' @param offset Pagination index of results
+#' @param select Vector of fields to return
 #' @return Data frame of results. Note that observations are returned
 #'   according to the structure returned by the server and may not be
 #'   wholly atomic.
 #' @export
-fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
+fetch_govtrack <- function(res = "bill", filter, sort, limit, offset,
+                           select) {
 
   res_url <- resources$resource_url[which(resources$resource == res)]
 
@@ -30,7 +32,7 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 
   }
 
-  query <- .create_query(res_url, filter, sort, limit, offset)
+  query <- .create_query(res_url, filter, sort, limit, offset, select)
   df <- jsonlite::fromJSON(query)$objects
 
   return(df)
@@ -74,7 +76,8 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 #' @rdname create_query
 #' @return Character string representing the constructed API query
 #' @keywords internal
-.create_query <- function(res_url, filter, sort, limit, offset) {
+.create_query <- function(res_url, filter, sort, limit, offset,
+                          select) {
 
   q <- paste0(res_url, "?")
 
@@ -103,6 +106,14 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 
   if (!missing(offset)) {
     q <- paste0(.add_amp(q), "offset=", offset)
+  }
+
+  if (!missing(select)) {
+
+    q <-
+      paste(select, collapse = ",") %>%
+      paste0(.add_amp(q), "fields=", .)
+
   }
 
   return(q)

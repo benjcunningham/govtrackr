@@ -39,6 +39,13 @@ test_that("Offset is appended", {
                paste0(root, "?offset=0"))
 })
 
+test_that("Field selection is appended", {
+  expect_equal(.create_query(root, select = c("foo")),
+               paste0(root, "?fields=foo"))
+  expect_equal(.create_query(root, select = c("foo", "bar")),
+               paste0(root, "?fields=foo,bar"))
+})
+
 
 context("Validating arguments")
 

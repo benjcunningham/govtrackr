@@ -4,7 +4,7 @@
 \alias{.create_query}
 \title{Create API query string}
 \usage{
-.create_query(res_url, filter, sort, limit, offset)
+.create_query(res_url, filter, sort, limit, offset, select)
 }
 \arguments{
 \item{res_url}{Resource root URL}
@@ -16,6 +16,8 @@
 \item{limit}{Maximum number of results to return}
 
 \item{offset}{Pagination index of results}
+
+\item{select}{Vector of fields to return}
 }
 \value{
 Character string representing the constructed API query
