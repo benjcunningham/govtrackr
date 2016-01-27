@@ -80,6 +80,8 @@ fetch_govtrack <- function(res = "bill", filter, sort, limit, offset) {
 
   if (!missing(filter)) {
 
+    filter <- lapply(filter, function(x) paste(x, collapse = "|"))
+
     q <-
       paste0(names(filter), "=", filter) %>%
       paste(collapse = "&") %>%

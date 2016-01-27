@@ -18,6 +18,8 @@ test_that("Filters are appended", {
                paste0(root, "?foo=bar"))
   expect_equal(.create_query(root, list(foo = "bar", baz = "qux")),
                paste0(root, "?foo=bar&baz=qux"))
+  expect_equal(.create_query(root, list(foo = c("bar", "baz"))),
+               paste0(root, "?foo=bar|baz"))
 })
 
 test_that("Sorts are appended", {
